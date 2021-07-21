@@ -20,6 +20,7 @@ app.use(express.json()); // pasa por este middleware
 
 // Rutas
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/events", require("./routes/events"));
 
 // escuchar peticiones
 app.listen(process.env.PORT, () => {
