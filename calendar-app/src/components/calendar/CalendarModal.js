@@ -8,9 +8,9 @@ import Swal from "sweetalert2";
 
 import { uiCloseModal } from "../../actions/ui";
 import {
-  eventAddNew,
   eventClearActiveEvent,
-  eventUpdated,
+  eventStartAddNew,
+  eventStarUpdate,
 } from "../../actions/events";
 
 const customStyles = {
@@ -92,6 +92,9 @@ export const CalendarModal = () => {
     const momentStart = moment(start);
     const momentEnd = moment(end);
 
+    // console.log(momentStart);
+    // console.log(momentEnd);
+
     if (momentStart.isSameOrAfter(momentEnd)) {
       Swal.fire(
         "Error",
@@ -107,18 +110,9 @@ export const CalendarModal = () => {
 
     //TODO: realizar grabación
     if (activeEvent) {
-      dispatch(eventUpdated(formValues));
+      dispatch(eventStarUpdate(formValues));
     } else {
-      dispatch(
-        eventAddNew({
-          ...formValues,
-          id: new Date().getTime(),
-          user: {
-            _id: "123",
-            name: "Felipe",
-          },
-        })
-      );
+      dispatch(eventStartAddNew(formValues));
     }
 
     setTitleValid(true);

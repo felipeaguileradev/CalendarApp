@@ -31,6 +31,7 @@ const crearEvento = async (req, res = reponse) => {
     });
   }
 };
+
 const actualizarEvento = async (req, res = reponse) => {
   const eventoId = req.params.id;
   const uid = req.uid;
